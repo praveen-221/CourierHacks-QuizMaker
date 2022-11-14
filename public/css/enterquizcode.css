@@ -1,0 +1,150 @@
+/*
+	@name attend_vibe_check___enter_code
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: block; position: relative; width: 360px; width: 360px; height: 800px; overflow: hidden; display: block;  margin-left: auto; margin-right: auto;  }
+
+#_bg__attend_vibe_check___enter_code {
+	top: 0px;
+	left: 0px;
+	width: 360px;
+	height: 800px;
+	background:rgba(255,255,255,1);
+}
+
+
+#rectangle_4 {
+	top: 87px;
+	left: 10px;
+	width: 340px;
+	height: 732px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-ms-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-o-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	background:rgba(255,255,255,0);
+	background: -webkit-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -o-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -moz-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -ms-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+}
+
+
+#rectangle_2 {
+	top: 478px;
+	left: 90px;
+	width: 180px;
+	height: 75px;
+	-ms-border-radius: 9px;
+	-o-border-radius: 9px;
+	-moz-border-radius: 9px;
+	-webkit-border-radius: 9px;
+	border-radius: 9px;
+	background:rgba(233,30,99,1);
+}
+
+
+#check_your_vibe {
+	top: 487.15px;
+	left: 102.71px;
+	width: 162.14px;
+	height: 63.39px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 20px;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+#username {
+	top: 282px;
+	left: 23px;
+	width: 300px;
+	height: 55px;
+}
+
+#rectangle {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 55px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#friend_s_username {
+	top: 15px;
+	left: 18px;
+	width: 213px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+#username_ek1 {
+	top: 372px;
+	left: 23px;
+	width: 300px;
+	height: 55px;
+}
+
+#rectangle_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 55px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#secret_code {
+	top: 15px;
+	left: 18px;
+	width: 152px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+
+#_vector {
+	top: 24px;
+	left: 21px;
+	width: 47px;
+	height: 41px;
+}
+
+
+
+/* Add your custom CSS here */

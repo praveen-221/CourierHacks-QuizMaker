@@ -31,6 +31,9 @@ app.get('/', (req, res) => {    //get function to render login.ejs
 app.get('/login', (req, res) => {    //get function to render login.ejs
   res.render('login.ejs');
 });
+app.get('/attendquiz', (req, res) => {    //get function to render login.ejs
+  res.render('attendquiz.ejs');
+});
 
 app.get('/home', (req, res) => {  //get function to render home.ejs
   if(req.session.loggedin == true){
@@ -50,8 +53,8 @@ app.get('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
   res.render('setvcq.ejs',{q:qid});
 });
 
-app.get('/setvcq', (req, res) => {  //get function to render register.ejs
-  res.render('setvcq.ejs');
+app.get('/enterquizcode', (req, res) => {  //get function to render register.ejs
+  res.render('enterquizcode.ejs');
 });
 
 app.get('/myquiz', (req, res) => {  //get function to render register.ejs

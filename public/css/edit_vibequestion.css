@@ -1,0 +1,385 @@
+/*
+	@name edit_question
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: block; position: relative; width: 360px; width: 360px; height: 800px; overflow: hidden; display: block;  margin-left: auto; margin-right: auto;  }
+
+#_bg__edit_question {
+	top: 0px;
+	left: 0px;
+	width: 360px;
+	height: 800px;
+	background:rgba(255,255,255,1);
+}
+
+
+#rectangle_4 {
+	top: 133px;
+	left: 10px;
+	width: 340px;
+	height: 686px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-ms-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-o-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	background:rgba(255,255,255,0);
+	background: -webkit-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -o-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -moz-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -ms-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+}
+
+#username {
+	top: 144px;
+	left: 23px;
+	width: 300px;
+	height: 69px;
+}
+
+#rectangle {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 69px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#what_s_your_favorite_band_ {
+	top: 15px;
+	left: 18px;
+	width: 213px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+#username_ek1 {
+	top: 256px;
+	left: 23px;
+	width: 300px;
+	height: 55px;
+}
+
+#rectangle_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 55px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#queen {
+	top: 15px;
+	left: 18px;
+	width: 152px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+#username_ek2 {
+	top: 345px;
+	left: 23px;
+	width: 300px;
+	height: 55px;
+}
+
+#rectangle_ek2 {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 55px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#the_beatles {
+	top: 16px;
+	left: 17px;
+	width: 152px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+#username_ek3 {
+	top: 434px;
+	left: 23px;
+	width: 300px;
+	height: 55px;
+}
+
+#rectangle_ek3 {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 55px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#one_direction {
+	top: 15px;
+	left: 18px;
+	width: 152px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+#username_ek4 {
+	top: 523px;
+	left: 23px;
+	width: 300px;
+	height: 55px;
+}
+
+#rectangle_ek4 {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 55px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#bts {
+	top: 15px;
+	left: 18px;
+	width: 152px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+
+#rectangle_2 {
+	top: 646px;
+	left: 81px;
+	width: 180px;
+	height: 75px;
+	-ms-border-radius: 9px;
+	-o-border-radius: 9px;
+	-moz-border-radius: 9px;
+	-webkit-border-radius: 9px;
+	border-radius: 9px;
+	background:rgba(233,30,99,1);
+}
+
+
+#make_changes {
+	top: 655.15px;
+	left: 93.71px;
+	width: 162.14px;
+	height: 63.39px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 20px;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+
+#_vector {
+	top: 68px;
+	left: 16px;
+	width: 47px;
+	height: 41px;
+}
+
+#group_30 {
+	top: 263px;
+	left: 265px;
+	width: 44px;
+	height: 44px;
+}
+
+#ellipse_2 {
+	top: 0px;
+	left: 0px;
+	width: 44px;
+	height: 44px;
+	-ms-border-radius: 22px / 22px;
+	-o-border-radius: 22px / 22px;
+	-moz-border-radius: 22px / 22px;
+	-webkit-border-radius: 22px / 22px;
+	border-radius: 22px / 22px;
+	background:rgba(52,168,83,1);
+}
+
+
+#__1 {
+	top: 13px;
+	left: 13px;
+	width: 36px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+#group_31 {
+	top: 353px;
+	left: 261px;
+	width: 44px;
+	height: 44px;
+}
+
+#ellipse_2_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 44px;
+	height: 44px;
+	-ms-border-radius: 22px / 22px;
+	-o-border-radius: 22px / 22px;
+	-moz-border-radius: 22px / 22px;
+	-webkit-border-radius: 22px / 22px;
+	border-radius: 22px / 22px;
+	background:rgba(52,168,83,1);
+}
+
+
+#__1_ek1 {
+	top: 13px;
+	left: 13px;
+	width: 36px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+#group_32 {
+	top: 530px;
+	left: 265px;
+	width: 44px;
+	height: 44px;
+}
+
+#ellipse_2_ek2 {
+	top: 0px;
+	left: 0px;
+	width: 44px;
+	height: 44px;
+	-ms-border-radius: 22px / 22px;
+	-o-border-radius: 22px / 22px;
+	-moz-border-radius: 22px / 22px;
+	-webkit-border-radius: 22px / 22px;
+	border-radius: 22px / 22px;
+	background:rgba(241.19,33.97,58.83,1);
+}
+
+
+#__1_ek2 {
+	top: 13px;
+	left: 15px;
+	width: 33px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+#group_33 {
+	top: 441px;
+	left: 265px;
+	width: 44px;
+	height: 44px;
+}
+
+#ellipse_2_ek3 {
+	top: 0px;
+	left: 0px;
+	width: 44px;
+	height: 44px;
+	-ms-border-radius: 22px / 22px;
+	-o-border-radius: 22px / 22px;
+	-moz-border-radius: 22px / 22px;
+	-webkit-border-radius: 22px / 22px;
+	border-radius: 22px / 22px;
+	background:rgba(82.87,75.21,75.21,1);
+}
+
+
+#_0 {
+	top: 13px;
+	left: 17px;
+	width: 29px;
+	height: 28px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+
+/* Add your custom CSS here */

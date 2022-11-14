@@ -42,8 +42,20 @@ app.get('/home', (req, res) => {  //get function to render home.ejs
 });
 
 app.get('/register', (req, res) => {  //get function to render register.ejs
-  
   res.render('register.ejs');
+});
+
+app.get('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
+  let qid = req.params.qid;
+  res.render('setvcq.ejs',{q:qid});
+});
+
+app.get('/setvcq', (req, res) => {  //get function to render register.ejs
+  res.render('setvcq.ejs');
+});
+
+app.get('/myquiz', (req, res) => {  //get function to render register.ejs
+  res.render('myquiz.ejs');
 });
 
 app.post('/auth_login', (req, res) => { //post function to authorize user login

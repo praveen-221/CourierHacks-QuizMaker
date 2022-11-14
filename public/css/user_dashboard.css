@@ -1,0 +1,261 @@
+/*
+	@name user_dashboard
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: block; position: relative; width: 360px; width: 360px; height: 800px; overflow: hidden; display: block;  margin-left: auto; margin-right: auto;  }
+
+#_bg__user_dashboard {
+	top: 0px;
+	left: 0px;
+	width: 360px;
+	height: 800px;
+	background:rgba(255,255,255,1);
+}
+
+
+#rectangle_1 {
+	top: 14px;
+	left: 10px;
+	width: 340px;
+	height: 317px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	-ms-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-o-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	background:rgba(255,255,255,0);
+	background: -webkit-linear-gradient(-202.47943368981deg , rgba(255, 0, 200, 0.516) 45%, rgba(204,0,255,0.516) 100%);
+	background: -o-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,0.516) 45%, rgba(204,0,255,0.516) 100%);
+	background: -moz-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,0.516) 45%, rgba(204,0,255,0.516) 100%);
+	background: -ms-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,0.516) 45%, rgba(204,0,255,0.516) 100%);
+	background: linear-gradient(-202.47943368981deg , rgba(255,0,198.9,0.516) 45%, rgba(204,0,255,0.516) 100%);
+}
+
+
+#hi__user__ {
+	top: 48px;
+	left: 44px;
+	width: 270px;
+	height: 86px;
+	overflow: hidden;
+	font-family: Inter;
+	font-size: 36px;
+	font-weight: bold;
+	text-align: left;
+	color:#524B4B;
+}
+
+#account_circle {
+	top: 108px;
+	left: 268px;
+	width: 62px;
+	height: 62px;
+}
+
+#vector {
+	top: 0px;
+	left: 0px;
+	width: 62px;
+	height: 62px;
+}
+
+
+#vector_ek1 {
+	top: 48.17px;
+	left: 278.17px;
+	width: 51.67px;
+	height: 51.67px;
+}
+
+#group_15 {
+	top: 143px;
+	left: 86px;
+	width: 195px;
+	height: 150px;
+}
+
+#rectangle_3 {
+	top: 0px;
+	left: 0px;
+	width: 195px;
+	height: 150px;
+	-ms-border-radius: 16px;
+	-o-border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	background:rgba(255,249.47,249.47,1);
+}
+
+
+#your_vibe__ {
+	top: 19px;
+	left: 14px;
+	width: 175.44px;
+	height: 68.49px;
+	overflow: hidden;
+	font-family: Inter;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	color:#524B4B;
+}
+
+
+#_99 {
+	top: 48px;
+	left: 61px;
+	width: 133.63px;
+	height: 113.5px;
+	overflow: hidden;
+	font-family: Inter;
+	font-size: 55px;
+	font-weight: bold;
+	text-align: left;
+	color:#AC4848;
+}
+
+
+#rectangle_4 {
+	top: 419px;
+	left: 16px;
+	width: 325px;
+	height: 100px;
+	-ms-border-radius: 16px;
+	-o-border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	-ms-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-o-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	background:rgba(233,30,99,1);
+}
+
+
+#edit_vibe_check_questions {
+	top: 455px;
+	left: 31px;
+	width: 245px;
+	height: 41px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 20px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#vector_ek2 {
+	top: 453px;
+	left: 288px;
+	width: 31px;
+	height: 31px;
+}
+
+
+#rectangle_5 {
+	top: 540px;
+	left: 18px;
+	width: 325px;
+	height: 100px;
+	-ms-border-radius: 16px;
+	-o-border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-border-radius: 16px;
+	border-radius: 16px;
+	-ms-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-o-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-webkit-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	-moz-box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	box-shadow:0px 4px 4px 1px rgba(0,0,0,0.25);
+	background:rgba(255,249.47,249.47,1);
+}
+
+
+#take_a_vibe_check_of_your_friend {
+	top: 579px;
+	left: 31px;
+	width: 288px;
+	height: 41px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+#emoji_people {
+	top: 565px;
+	left: 274px;
+	width: 59px;
+	height: 59px;
+}
+#group {
+	top: 0px;
+	left: 0px;
+	width: 59px;
+	height: 59px;
+}
+
+#vector_ek3 {
+	top: 0px;
+	left: 0px;
+	width: 59px;
+	height: 59px;
+}
+
+
+#vector_ek4 {
+	top: 0px;
+	left: 0px;
+	width: 59px;
+	height: 59px;
+}
+
+#group_ek1 {
+	top: 4.92px;
+	left: 10.03px;
+	width: 39px;
+	height: 49.17px;
+}
+#group_ek2 {
+	top: 0px;
+	left: 0px;
+	width: 39px;
+	height: 49.17px;
+}
+
+#vector_ek5 {
+	top: 0px;
+	left: 15px;
+	width: 9.83px;
+	height: 9.83px;
+}
+
+
+#vector_ek6 {
+	top: 0px;
+	left: 0px;
+	width: 39px;
+	height: 49.17px;
+}
+
+
+
+/* Add your custom CSS here */

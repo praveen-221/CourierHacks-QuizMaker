@@ -13,28 +13,30 @@
 
 <body>
     <div class="ui middle aligned center aligned grid">
+        
         <div class="column ui stacked segment">
+            <a href="/">Home</a>
             <h1 class="ui header">Register</h1>
 
             <form class="ui medium form" method="POST" action="auth_register">
-                <label class="ui teal header">
+                <label class="ui pink header">
                     Name
                 </label>
                 <input type="text" name="name" placeholder="Example" required />
 
-                <label htmlFor="password" class="ui orange header">
+                <label htmlFor="password" class="ui pink header">
                     <br /><br />
                     Email
                 </label>
                 <input type="text" name="email" placeholder="example@example.com" required autofocus email />
 
-                <label htmlFor="password" class="ui red header">
+                <label htmlFor="password" class="ui pink header">
                     <br /><br />
                     Password
                 </label>
                 <input type="password" name="password" placeholder="Your password" required />
                 <br /><br /><br />
-                <input class="ui fluid large green submit button" type="submit" value="Login" />
+                <input class="ui fluid large pink submit button" type="submit" value="Login" />
             </form>
         </div>
     </div>

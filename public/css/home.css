@@ -1,0 +1,140 @@
+/*
+	@name home
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: block; position: relative; width: 360px; width: 360px; height: 800px; overflow: hidden; display: block;  margin-left: auto; margin-right: auto;  }
+
+#_bg__home {
+	top: 0px;
+	left: 0px;
+	width: 360px;
+	height: 800px;
+	background:rgba(255,255,255,1);
+}
+
+
+#welcome {
+	top: 353px;
+    left: 73px;
+    width: 200px;
+    height: 75px;
+    /* overflow: hidden; */
+    font-family: Inter;
+    font-size: 40px;
+    text-align: center;
+    color: #524B4B;
+}
+
+
+#create_an_account_and_build_your_friendship {
+	top: 400px;
+    left: 57px;
+    width: 231px;
+    height: 45px;
+    overflow: hidden;
+    font-family: Inter;
+    font-size: 16px;
+    text-align: center;
+    color: #000000;
+}
+
+#vector {
+	top: 574px;
+	left: 130px;
+	width: 100.81px;
+	height: 360px;
+}
+
+#vector_ek1 {
+	top: 131px;
+	left: -130px;
+	width: 359.9px;
+	height: 99.27px;
+}
+
+#engaging_button_false_cls_a {
+	top: 456px;
+    left: 86px;
+    width: 169px;
+    height: 56px;
+    position: absolute;
+}
+#button {
+	top: 0px;
+	left: 0px;
+	width: 169px;
+	height: 56px;
+}
+
+#sign_up_for_free {
+	top: 18px;
+	left: 17px;
+	width: 160px;
+	height: 34px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 20px;
+	text-align: left;
+	color:#FFFFFF;
+}
+
+
+#already_have_an_account_ {
+	top: 522px;
+    left: 48px;
+    width: 196px;
+    height: 28.5px;
+    overflow: hidden;
+    font-family: Inter;
+    font-size: 15px;
+    text-align: center;
+    color: #000000;
+}
+
+
+#_login {
+	top: 522px;
+    left: 242px;
+    width: 49px;
+    height: 28.5px;
+    overflow: hidden;
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #CC00FF;
+}
+
+#group_34 {
+	top: 38px;
+    left: 15px;
+    width: 304px;
+    height: 288px;
+}
+
+#image_1 {
+	top: 0px;
+	left: 2px;
+	width: 302px;
+	height: 288px;
+}
+
+
+#logo_1 {
+	top: 0px;
+	left: 0px;
+	width: 288px;
+	height: 288px;
+}
+
+
+
+/* Add your custom CSS here */

@@ -24,16 +24,25 @@ app.use(
   })
 );
 
-//# render, and authorization
 app.get('/', (req, res) => {    //get function to render login.ejs
+  res.render('landing.ejs');
+});
+//# render, and authorization
+app.get('/login', (req, res) => {    //get function to render login.ejs
   res.render('login.ejs');
 });
 
 app.get('/home', (req, res) => {  //get function to render home.ejs
-  res.render('homepage.ejs');
+  if(req.session.loggedin == true){
+    res.render('homepage.ejs');
+  }else{
+    res.redirect('/');
+  }
+  
 });
 
 app.get('/register', (req, res) => {  //get function to render register.ejs
+  
   res.render('register.ejs');
 });
 
@@ -49,8 +58,7 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
         if (err) throw err;
         if (results.length > 0) {
           req.session.loggedin = true;   //set loggedin property as true
-          req.session.loggedout = false;  //set loggedout property as false
-          req.session.email = email;    //set email property as email itself
+            req.session.email = email;    //set email property as email itself
           res.redirect('/home');    //redirect to home
         } else {
           res.json({    //json output with error and error code
@@ -78,6 +86,11 @@ app.post('/auth_register', (req, res) => {  //post function to authorize registr
     }
   });
 });
+
+app.use('/logout',(req,res)=>{
+  req.session.destroy();
+  res.redirect('/');
+})
 
 app.get('*', (req, res) => {
   res.send('404 - Page not found'); //set other unknown pages as 404

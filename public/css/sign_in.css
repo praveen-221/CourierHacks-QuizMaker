@@ -1,0 +1,269 @@
+/*
+	@name sign_in
+*/
+/* Only edit this if you know what you are doing! */
+body { margin: 0px; padding: 0px; font-family:"Arial"; overflow-x:hidden; }
+
+/* Only edit this if you know what you are doing! */
+img { position: absolute; display: block; margin: 0px; border: none; padding: 0px; }
+
+/* Only edit this if you know what you are doing! */
+div { position: absolute; }
+
+#content-container { display: block; position: relative; width: 360px; width: 360px; height: 800px; overflow: hidden; display: block;  margin-left: auto; margin-right: auto;  }
+
+#_bg__sign_in {
+	top: 0px;
+	left: 0px;
+	width: 360px;
+	height: 800px;
+	background:rgba(255,255,255,1);
+}
+
+
+#rectangle_1 {
+	top: 319px;
+	left: -25px;
+	width: 393px;
+	height: 481px;
+	-ms-border-radius: 6px;
+	-o-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border-radius: 6px;
+	background:rgba(255,255,255,0);
+	background: -webkit-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -o-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -moz-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: -ms-linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+	background: linear-gradient(-202.47943368981deg , rgba(255,0,198.9,1) 45%, rgba(204,0,255,1) 100%);
+}
+
+#continue_with_google___left_aligned___fixed {
+	top: 643px;
+	left: 63px;
+	width: 240px;
+	height: 48px;
+}
+#google_logo {
+	top: 15px;
+	left: 15px;
+	width: 24px;
+	height: 24px;
+}
+#logo_googleg_48dp {
+	top: 0.5px;
+	left: 0.5px;
+	width: 23px;
+	height: 23px;
+}
+
+#shape {
+	top: 9px;
+	left: 12px;
+	width: 11.04px;
+	height: 10.8px;
+}
+
+
+#shape_ek1 {
+	top: 14px;
+	left: 1px;
+	width: 17.89px;
+	height: 9.31px;
+}
+
+
+#shape_ek2 {
+	top: 6px;
+	left: 0px;
+	width: 5.07px;
+	height: 10.33px;
+}
+
+
+#shape_ek3 {
+	top: 0px;
+	left: 1px;
+	width: 17.97px;
+	height: 9.31px;
+}
+
+
+#shape_ek4 {
+	top: 0px;
+	left: 0px;
+	width: 23px;
+	height: 23px;
+}
+
+
+#continue_with_google {
+	top: 15px;
+	left: 51px;
+	width: 188px;
+	height: 37px;
+	overflow: hidden;
+	font-family: Roboto;
+	font-size: 20px;
+	text-align: center;
+	color:#000000;
+}
+
+
+#or {
+	top: 606px;
+	left: 168px;
+	width: 31px;
+	height: 28.5px;
+	overflow: hidden;
+	font-family: Inter;
+	font-size: 15px;
+	text-align: center;
+	color:#000000;
+}
+
+
+#loginhello_1 {
+	
+	left: 98px;
+	width: 274.69px;
+	height: 272.93px;
+}
+
+#username {
+	top: 373px;
+	left: 30px;
+	width: 300px;
+	height: 55px;
+}
+
+#rectangle {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 55px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#e_mail {
+	top: 15px;
+	left: 18px;
+	width: 152px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+#username_ek1 {
+	top: 463px;
+	left: 33px;
+	width: 300px;
+	height: 55px;
+}
+
+#rectangle_ek1 {
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 55px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background:rgba(255,255,255,1);
+}
+
+
+#password {
+	top: 15px;
+	left: 18px;
+	width: 152px;
+	height: 38px;
+	overflow: hidden;
+	font-family: Lexend Deca;
+	font-size: 20px;
+	text-align: left;
+	color:#E91E63;
+}
+
+
+#sign_in_bro {
+	top: 136px;
+	left: 30px;
+	width: 274px;
+	height: 100px;
+	
+	font-family: Inter;
+	font-size: 60px;
+	font-weight: bold;
+	text-align: left;
+	color:#524B4B;
+}
+
+#button {
+	top: 546px;
+	left: 117px;
+	width: 126px;
+	height: 41px;
+}
+
+.loginbuttom{
+	background-color: rgba(233,30,99,1);
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+#rectangle_2 {
+	top: 0px;
+	left: 0px;
+	width: 126px;
+	height: 41px;
+	-ms-border-radius: 9px;
+	-o-border-radius: 9px;
+	-moz-border-radius: 9px;
+	-webkit-border-radius: 9px;
+	border-radius: 9px;
+	background:rgba(233,30,99,1);
+}
+
+
+#sign_in {
+	top: 5px;
+	left: 8px;
+	width: 118px;
+	height: 41px;
+	overflow: hidden;
+	font-family: Lato;
+	font-size: 20px;
+	text-align: center;
+	color:#FFFFFF;
+}
+
+
+#_vector {
+	top: 42px;
+	left: 18px;
+	width: 47px;
+	height: 41px;
+}
+
+
+
+/* Add your custom CSS here */

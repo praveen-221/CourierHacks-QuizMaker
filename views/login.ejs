@@ -14,21 +14,22 @@
 <body>
     <div class="ui middle aligned center aligned grid">
         <div class="column ui stacked segment">
+            <a href="/">Home</a>
             <h1 class="ui header">Login Page</h1>
 
             <form class="ui large form" method="POST" action="auth_login">
-                <label class="ui orange header">
+                <label class="ui pink header">
                     Email
                 </label>
                 <input type="email" name="email" placeholder="example@example.com" required autofocus email />
 
-                <label htmlFor="password" class="ui red header">
+                <label htmlFor="password" class="ui pink header">
                     <br /><br />
                     Password
                 </label>
                 <input type="password" name="password" placeholder="Your password" required />
                 <br /><br /><br />
-                <input class="ui fluid large green submit button" type="submit" value="Login" /><br>
+                <input class="ui fluid large pink submit button" type="submit" value="Login" /><br>
                 <a href="/register" class="ui">Not registered?</a>
             </form>
         </div>

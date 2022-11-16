@@ -45,7 +45,7 @@ app.get('/login', (req, res) => {    //get function to render login.ejs
   res.render('login.ejs');
 });
 // app.get('/attendquiz', (req, res) => {    //get function to render login.ejs
-  
+
 // });
 
 app.get('/home', (req, res) => {  //get function to render home.ejs
@@ -171,18 +171,18 @@ app.get('/enterquizcode', (req, res) => {  //get function to render register.ejs
 });
 
 app.post('/enterquizcode', (req, res) => {  //get function to render register.ejs
-  
+
   conn.query(
     "select * from quiz where quizid=?",
     [req.body.friendcode],
-    (err,results)=> {
-      if(err) throw err;
+    (err, results) => {
+      if (err) throw err;
       conn.query(
         "select * from question where userid=?",
         [results[0].userid],
-        (err, result)=>{
+        (err, result) => {
           console.log(result[0].userid)
-          res.render('attendquiz.ejs', {result: result, userid:results[0].userid});
+          res.render('attendquiz.ejs', { result: result, userid: results[0].userid, friendname: req.body.friendname });
         }
       )
     }
@@ -201,9 +201,10 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
       (err, results) => {   //function for error throwing and the results
         if (err) throw err;
         if (results.length > 0) {
-          req.session.userid = results[0].userid;
+          req.session.userid = results[0].id;
           req.session.loggedin = true;   //set loggedin property as true
-          req.session.email = email;    //set email property as email itself
+          req.session.email = email;
+          req.session.name = results[0].name;  //set email property as email itself
           res.redirect('/home');    //redirect to home
         } else {
           res.json({    //json output with error and error code
@@ -230,7 +231,7 @@ app.post('/auth_register', async (req, res) => {  //post function to authorize r
       },
       template: "9B22S9HXAXMBKYPESJ6PQ9SWE165",
       data: {
-        variables: req.body.name,
+        userName: req.body.name,
       },
     },
   });
@@ -272,83 +273,109 @@ app.post("/broadcastquiz", (req, res) => {
 
 })
 
-app.post('/attendquiz',(req,res)=>{
-  console.log("---",req.body);
+app.post('/attendquiz', (req, res) => {
   let crctpts = 0;
   let redpts = 0;
   let novibe = 0;
   let vibepercentage = 0;
-  let vcomm="";
+  let vcomm = "";
+  let email = ""
   conn.query(
     'SELECT * FROM question WHERE userid = ?',  //set conn query to mysql
     [req.body.userid],    //insert email and password as data
-    (err, results) => {   //function for error throwing and the results
+    async (err, results) => {   //function for error throwing and the results
       if (err) throw err;
       if (results.length == 5) {
-           //redirect to home
-           console.log(results);
-           console.log(results[4][req.body.q0ans]);
-           if(results[4][req.body.q0ans]=="1"){
-            crctpts+=1;
-           }else if(results[4][req.body.q0ans]=="-1"){
-              redpts+=1;
-           }else{
-              novibe+=1;
-           }
-           if(results[0][req.body.q1ans]=="1"){
-            crctpts+=1;
-           }else if(results[0][req.body.q1ans]=="-1"){
-              redpts+=1;
-           }else{
-              novibe+=1;
-           }
-           if(results[1][req.body.q2ans]=="1"){
-            crctpts+=1;
-           }else if(results[1][req.body.q2ans]=="-1"){
-              redpts+=1;
-           }else{
-              novibe+=1;
-           }
-           if(results[2][req.body.q3ans]=="1"){
-            crctpts+=1;
-           }else if(results[2][req.body.q3ans]=="-1"){
-              redpts+=1;
-           }else{
-              novibe+=1;
-           }
-           if(results[3][req.body.q4ans]=="1"){
-            crctpts+=1;
-           }else if(results[3][req.body.q4ans]=="-1"){
-              redpts+=1;
-           }else{
-              novibe+=1;
-           }
-           
+        //redirect to home
+        console.log(results);
+        console.log(results[4][req.body.q0ans]);
+        if (results[4][req.body.q0ans] == "1") {
+          crctpts += 1;
+        } else if (results[4][req.body.q0ans] == "-1") {
+          redpts += 1;
+        } else {
+          novibe += 1;
+        }
+        if (results[0][req.body.q1ans] == "1") {
+          crctpts += 1;
+        } else if (results[0][req.body.q1ans] == "-1") {
+          redpts += 1;
+        } else {
+          novibe += 1;
+        }
+        if (results[1][req.body.q2ans] == "1") {
+          crctpts += 1;
+        } else if (results[1][req.body.q2ans] == "-1") {
+          redpts += 1;
+        } else {
+          novibe += 1;
+        }
+        if (results[2][req.body.q3ans] == "1") {
+          crctpts += 1;
+        } else if (results[2][req.body.q3ans] == "-1") {
+          redpts += 1;
+        } else {
+          novibe += 1;
+        }
+        if (results[3][req.body.q4ans] == "1") {
+          crctpts += 1;
+        } else if (results[3][req.body.q4ans] == "-1") {
+          redpts += 1;
+        } else {
+          novibe += 1;
+        }
 
-           if(redpts==5){
-            vibepercentage=-100;
-            vcomm="Hmmm No comments to each their own"
-           }else if(novibe==5){
-            vibepercentage=0;
-            vcomm="Maybe u could get to know each other more"
-           }else if(crctpts==5){
-            vibepercentage=100;
-            vcomm="If you are not bffs yet, you should be"
-           }else{
-            vibepercentage = (crctpts/5)*100 - (redpts/5)*20 ;
-           }
+
+        if (redpts == 5) {
+          vibepercentage = -100;
+          vcomm = "Hmmm No comments to each their own"
+        } else if (novibe == 5) {
+          vibepercentage = 0;
+          vcomm = "Maybe u could get to know each other more"
+        } else if (crctpts == 5) {
+          vibepercentage = 100;
+          vcomm = "If you are not bffs yet, you should be"
+        } else {
+          vibepercentage = (crctpts / 5) * 100 - (redpts / 5) * 20;
+          if (vibepercentage < 50) vcomm = "You may not be in vibe that much! Try couple's therapy";
+          else vcomm = "You are both partners in crime. Keep the vibe going!"
+        }
 
       } else {
         // res.redirect('/home'    //json output with error and error code
         //   )
       }
-      res.render('quizcomplete.ejs',{vbp:vibepercentage,vbcom:vcomm});
+      conn.query(
+        "select * from user where name=?",
+        [req.body.friendname],
+        async (err, results) => {
+          if (err) throw err;
+          console.log(req.body)
+          const { requestId } = await courier.send({
+            message: {
+              to: {
+                email: results[0].email,
+              },
+              template: "RQAA69315Y4WMZP9Y0YF20SXD665",
+              data: {
+                friendName: req.session.name,
+                userName: req.body.friendname,
+                vibePercent: vibepercentage,
+                vibeComment: vcomm,
+              },
+            },
+          });
+          res.render('quizcomplete.ejs', { vbp: vibepercentage, vbcom: vcomm });
+        }
+      )
+      console.log("----", email)
+
     }
   );
 });
 
-app.use('/quizcomplete',(req,res)=>{
-res.render('quizcomplete.ejs',{vbp:"98",vbcom:"Nice match"});
+app.use('/quizcomplete', (req, res) => {
+  res.render('quizcomplete.ejs', { vbp: "98", vbcom: "Nice match" });
 });
 
 

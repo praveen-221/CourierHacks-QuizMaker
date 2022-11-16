@@ -33,6 +33,7 @@
         <div class="container d-flex justify-content-center flex-column">
             <form class="d-flex justify-content-center flex-column " method="post" action="/attendquiz">
                 <input type="hidden" name="userid" value="<%=userid%>">
+                <input type="hidden" name="friendname" value="<%=friendname%>">
                 <% for(var i=0;i<result.length;i++){ %>
                   <div class="card m-2 " style="width: 100rem;">
                     <div class="card-body ">

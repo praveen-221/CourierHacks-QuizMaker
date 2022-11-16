@@ -13,116 +13,197 @@
  *
 */
  -->
- <!DOCTYPE html>
- <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
-     <head>
-         <meta http-equiv="content-type" content="text/html" charset="utf-8" />
-         <title>edit_question</title>
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <meta name="description" content="" >
-         <link rel="stylesheet" href="../css/style.css" />
-         <link rel="stylesheet" href="../css/semantic.min.css" />
-         <link rel="StyleSheet" href="../css/edit_vibequestion.css" />
-         <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js?v=6"></script>
-         <!-- Add your custom HEAD content here -->
- 
-     </head>
-     <style>
-        select option {
-  margin: 40px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
-select option[value=1] {
-  background: rgba(0, 247, 58, 0.951);
-}
+<head>
+  <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+  <title>edit_question</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/semantic.min.css" />
+  <link rel="StyleSheet" href="../css/edit_vibequestion.css" />
+  <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js?v=6"></script>
+  <!-- Add your custom HEAD content here -->
 
-select option[value=-1] {
-  background: rgba(213, 5, 5, 0.83);
-}
+</head>
+<style>
+  select option {
+    margin: 40px;
+    background: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  }
 
-select option[value=0] {
-  background: rgba(200, 200, 200, 0.3);
-}
+  select option[value=1] {
+    background: rgba(0, 247, 58, 0.951);
+  }
 
-     </style>
-     <body>
-         <div id="content-container" >
-             <div id="_bg__edit_question"  ></div>
-             <div id="rectangle_4"  ></div>
-             <form class="ui large form" method="POST" action="questionupdate">
-                <div id="rectangle"  ></div>
-                
+  select option[value=-1] {
+    background: rgba(213, 5, 5, 0.83);
+  }
 
-                <input type="hidden" name="qid" value=<%-q%>>
-               
-             <div id="username"  >
-                 
-                <h1>Q<%-q%></h1>
-                    <input type="text" name="qstring" placeholder="Enter question here...." required />
-                   
- 
-             </div>
-             <div id="username_ek1"  >
-                <input type="text" name="opta" placeholder="Enter Option A...." required />
-    
-                <select id="optapt" name="optapt">  
-                    <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
-                    <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
-                    <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
-                    </select>
-            
+  select option[value=0] {
+    background: rgba(200, 200, 200, 0.3);
+  }
+</style>
+
+<body>
+  <% if (arr) { %>
+      <div id="content-container">
+        <div id="_bg__edit_question"></div>
+        <div id="rectangle_4"></div>
+        <form class="ui large form" method="POST" action=<%= quesid %>>
+          <div id="rectangle"></div>
+
+
+          <input type="hidden" name="qid" value=>
+
+          <div id="username">
+
+            <h1>Q<%= quesid %></h1>
+            <input type="text" name="qstring"  value=<%= arr.qtext %> placeholder="Enter question here...." required />
+
+
+          </div>
+          <div id="username_ek1">
+            <input type="text" name="opta"  value=<%= arr.opta %> placeholder="Enter Option A...." required />
+
+            <select id="optapt" name="optapt">
+              <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
+              <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
+              <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
+            </select>
+
+
+          </div>
+          <div id="username_ek2">
+
+            <input type="text" name="optb" value=<%= arr.optb %> placeholder="Enter Option A...." required />
+            <select id="optbpt" name="optbpt">
+              <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
+              <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
+              <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
+            </select>
+
+          </div>
+
+          <div id="username_ek3">
+            <input type="text" name="optc" value=<%= arr.optc %> placeholder="Enter Option A...." required />
+            <select id="optcpt" name="optcpt">
+              <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
+              <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
+              <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
+            </select>
+
+
+          </div>
+
+          <div id="username_ek4">
+            <input type="text" name="optd" value=<%= arr.optd %> placeholder="Enter Option A...." required />
+            <select id="optdpt" name="optdpt">
+              <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
+              <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
+              <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
+            </select>
+
+            <input class="ui fluid large pink submit button" type="submit" value="Register" />
+
+          </div>
+
+        </form>
+
+
+
+
+        <a id="_vector_link" href="../myquiz">
+          <img src="../skins/_vector.png" id="_vector" />
+        </a>
+
+
+
+
+
+      </div>
+      <% } else { %>
+        <div id="content-container">
+          <div id="_bg__edit_question"></div>
+          <div id="rectangle_4"></div>
+          <form class="ui large form" method="POST" action=<%= quesid %>>
+            <div id="rectangle"></div>
+
+
+            <input type="hidden" name="qid" value=>
+
+            <div id="username">
+
+              <h1>Q<%= quesid %></h1>
+              <input type="text" name="qstring" placeholder="Enter question here...." required />
+
 
             </div>
-            <div id="username_ek2"  >
-                 
-                <input type="text" name="optb" placeholder="Enter Option A...." required />
-                <select id="optbpt" name="optbpt">  
-                    <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
-                    <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
-                    <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
-                   </select>
-            
-             </div>
- 
-             <div id="username_ek3"  >
-                <input type="text" name="optc" placeholder="Enter Option A...." required />
-                <select id="optcpt" name="optcpt">  
-                    <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
-                    <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
-                    <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
-                    </select>
-                    
- 
-             </div>
-             
-             <div id="username_ek4"  >
-                <input type="text" name="optd" placeholder="Enter Option A...." required />
-                <select id="optdpt" name="optdpt">  
-                    <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
-                    <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
-                    <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
-                   </select>
-            
-                   <input class="ui fluid large pink submit button" type="submit" value="Register" />
-           
-             </div>
+            <div id="username_ek1">
+              <input type="text" name="opta" placeholder="Enter Option A...." required />
 
- </form>
-             
- 
-             
- 
-                          <a id="_vector_link" href="../myquiz" >
-             <img src="../skins/_vector.png" id="_vector" />
-             </a>
- 
-          
- 
-            
-            
-         </div>
-     </body>
- </html>
+              <select id="optapt" name="optapt">
+                <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
+                <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
+                <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
+              </select>
+
+
+            </div>
+            <div id="username_ek2">
+
+              <input type="text" name="optb" placeholder="Enter Option A...." required />
+              <select id="optbpt" name="optbpt">
+                <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
+                <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
+                <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
+              </select>
+
+            </div>
+
+            <div id="username_ek3">
+              <input type="text" name="optc" placeholder="Enter Option A...." required />
+              <select id="optcpt" name="optcpt">
+                <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
+                <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
+                <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
+              </select>
+
+
+            </div>
+
+            <div id="username_ek4">
+              <input type="text" name="optd" placeholder="Enter Option A...." required />
+              <select id="optdpt" name="optdpt">
+                <option style="background-color: rgb(35, 206, 35);" class="greenColor" value=1>+1 (My vibe)</option>
+                <option style="background-color: rgb(206, 35, 35);" class="redColor" value=-1>-1 (Red flag)</option>
+                <option style="background-color: rgb(101, 103, 101);" class="greyColor" value=0>0 (Not my vibe)</option>
+              </select>
+
+              <input class="ui fluid large pink submit button" type="submit" value="Register" />
+
+            </div>
+
+          </form>
+
+
+
+
+          <a id="_vector_link" href="../myquiz">
+            <img src="../skins/_vector.png" id="_vector" />
+          </a>
+
+
+
+
+
+        </div>
+        <% } %>
+
+</body>
+
+</html>

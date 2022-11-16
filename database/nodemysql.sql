@@ -66,3 +66,17 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+create table vcdb.question(
+	quesid varchar(10),
+    userid int(11),
+    qtext varchar(255),
+    opta varchar(100),
+    optascore int(11),
+    optb varchar(100),
+    optbscore int(11),
+    optc varchar(100),
+    optcscore int(11),
+    optd varchar(100),
+    optdscore int(11)
+);

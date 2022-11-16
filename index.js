@@ -4,6 +4,7 @@ const bodyParser = require('body-parser'); //import body-parser dependency as bo
 const express = require('express'); //import express dependency as express
 const app = express(); //declare app variable as express
 let conn = require('./mysql.js'); //declare conn variable to require file mysql.js
+const connection = require('express-myconnection');
 
 //# settings
 //environment settings & db connect
@@ -33,12 +34,12 @@ app.get('/login', (req, res) => {    //get function to render login.ejs
 });
 
 app.get('/home', (req, res) => {  //get function to render home.ejs
-  if(req.session.loggedin == true){
+  if (req.session.loggedin == true) {
     res.render('homepage.ejs');
-  }else{
+  } else {
     res.redirect('/');
   }
-  
+
 });
 
 app.get('/register', (req, res) => {  //get function to render register.ejs
@@ -47,7 +48,66 @@ app.get('/register', (req, res) => {  //get function to render register.ejs
 
 app.get('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
   let qid = req.params.qid;
-  res.render('setvcq.ejs',{q:qid});
+  conn.query(
+    'SELECT * FROM question WHERE userid=? AND quesid=?',
+    [1, qid],
+    (err, results)=> {
+      if(err) throw err;
+      console.log(results[0]);
+      res.render('setvcq.ejs', { quesid:qid, arr: results[0] });
+    }
+  )
+  
+});
+
+app.post('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
+  let qid = req.params.qid;
+  let arr = [
+  req.body.qstring,
+  req.body.opta,
+  req.body.optapt,
+  req.body.optb,
+  req.body.optbpt,
+  req.body.optc,
+  req.body.optcpt,
+  req.body.optd,
+  req.body.optdpt]
+  var userid=1;
+  console.log(qid, req.body);
+  //agilan
+  conn.query(
+    'SELECT * FROM question WHERE userid=? AND quesid=?',
+    [userid, qid],
+    (err, results) => {
+      if (err) throw err;
+      // console.log(results);
+      if (results.length == 0) {
+        
+        conn.query(
+          'INSERT INTO question VALUES (?,?,?,?,?,?,?,?,?,?,?)',  //set conn query to mysql
+          [qid, 1, ...arr],    //insert email and password as data
+          (err, results) => {   //function for error throwing and the results
+            if (err) throw err;
+            res.redirect('/myquiz');
+          }
+        )
+      }
+      else{
+        console.log("helo");
+        conn.query(
+          'update question set  qtext=?, opta=?, optascore=?, optb=?, optbscore=?, optc=?, optcscore=?, optd=?, optdscore=? where userid=? and quesid=?',  //set conn query to mysql
+          [ ...arr, req.body.qstring, 1, qid],    //insert email and password as data
+          (err, results) => {   //function for error throwing and the results
+            if (err) throw err;
+            res.redirect('/myquiz');
+          }
+        )
+      }
+    }
+  );
+
+
+
 });
 
 app.get('/setvcq', (req, res) => {  //get function to render register.ejs
@@ -70,7 +130,7 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
         if (err) throw err;
         if (results.length > 0) {
           req.session.loggedin = true;   //set loggedin property as true
-            req.session.email = email;    //set email property as email itself
+          req.session.email = email;    //set email property as email itself
           res.redirect('/home');    //redirect to home
         } else {
           res.json({    //json output with error and error code
@@ -99,7 +159,7 @@ app.post('/auth_register', (req, res) => {  //post function to authorize registr
   });
 });
 
-app.use('/logout',(req,res)=>{
+app.use('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/');
 })

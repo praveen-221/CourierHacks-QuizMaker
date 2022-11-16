@@ -103,7 +103,7 @@ app.post('/auth_register', async (req, res) => {  //post function to authorize r
       },
       template: "9B22S9HXAXMBKYPESJ6PQ9SWE165",
       data: {
-        variables: req.body.name,
+        userName : req.body.name,
       },
     },
   });
@@ -120,13 +120,92 @@ app.post('/auth_register', async (req, res) => {  //post function to authorize r
 app.use('/logout',(req,res)=>{
   req.session.destroy();
   res.redirect('/');
-})
+});
+
+app.post('/attendquiz',(req,res)=>{
+  console.log(req);
+  let crctpts = 0;
+  let redpts = 0;
+  let novibe = 0;
+  let vibepercentage = 0;
+  let vcomm="";
+  conn.query(
+    'SELECT * FROM question WHERE userid = ?',  //set conn query to mysql
+    [req.body.userid],    //insert email and password as data
+    (err, results) => {   //function for error throwing and the results
+      if (err) throw err;
+      if (results.length == 5) {
+           //redirect to home
+          
+           if(results[0][req.body.q1ans]=="+1"){
+            crctpts+=1;
+           }else if(results[0][req.body.q1ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           if(results[0][req.body.q2ans]=="+1"){
+            crctpts+=1;
+           }else if(results[0][req.body.q2ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           if(results[0][req.body.q3ans]=="+1"){
+            crctpts+=1;
+           }else if(results[0][req.body.q3ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           if(results[0][req.body.q4ans]=="+1"){
+            crctpts+=1;
+           }else if(results[0][req.body.q4ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           if(results[0][req.body.q5ans]=="+1"){
+            crctpts+=1;
+           }else if(results[0][req.body.q5ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+
+           if(redpts==5){
+            vibepercentage=-100;
+            vcomm="Hmmm No comments to each their own"
+           }else if(novibe==5){
+            vibepercentage=0;
+            vcomm="Maybe u could get to know each other more"
+           }else if(crctpts==5){
+            vibepercentage=100;
+            vcomm="If you are not bffs yet, you should be"
+           }else{
+            vibepercentage = (crctpts/5)*100 - (redpts/5)*20 ;
+           }
+
+      } else {
+        res.redirect('/home'    //json output with error and error code
+          );
+      }
+      res.render('/quizcomplete',{vbp:vibepercentage,vbcom:vcomm});
+    }
+  );
+});
+
+app.use('/quizcomplete',(req,res)=>{
+res.render('quizcomplete.ejs',{vbp:"98",vbcom:"Nice match"});
+});
+
 
 app.get('*', (req, res) => {
   res.send('404 - Page not found'); //set other unknown pages as 404
 });
-
 //# middleware port
 app.listen(9090, () => { //listen to port
   console.log('Port established in 9090'); //output to console
 });
+
+

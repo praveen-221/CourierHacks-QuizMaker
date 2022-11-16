@@ -4,7 +4,19 @@ const bodyParser = require('body-parser'); //import body-parser dependency as bo
 const express = require('express'); //import express dependency as express
 const app = express(); //declare app variable as express
 let conn = require('./mysql.js'); //declare conn variable to require file mysql.js
-const connection = require('express-myconnection');
+// Install with: npm install @trycourier/courier
+const { CourierClient } = require("@trycourier/courier");
+const courier = CourierClient({ authorizationToken: "pk_prod_BJCG9V609RMYQMMTRCAS3BSA0DSA" });
+var alert = require('alert');
+
+const window = require("window");
+const { request } = require('express');
+
+// var popup = require("popups");
+
+let submitEnable = false;
+
+
 
 //# settings
 //environment settings & db connect
@@ -32,10 +44,33 @@ app.get('/', (req, res) => {    //get function to render login.ejs
 app.get('/login', (req, res) => {    //get function to render login.ejs
   res.render('login.ejs');
 });
+// app.get('/attendquiz', (req, res) => {    //get function to render login.ejs
+  
+// });
 
 app.get('/home', (req, res) => {  //get function to render home.ejs
   if (req.session.loggedin == true) {
-    res.render('homepage.ejs');
+    let quizattend = false;
+    conn.query(
+      'SELECT * FROM question where userid=?',  //set conn query to mysql
+      [1],    //insert email and password as data
+      (err, results) => {   //function for error throwing and the results
+        if (err) throw err;
+        if (results.length < 5) {
+          res.render('homepage.ejs', { submitEnable: false, quizcode: 0 });
+        }
+
+        else {
+          conn.query(
+            "select * from quiz where userid=?", [1],
+            (err, results) => {
+              console.log(results[0].quizid)
+              res.render('homepage.ejs', { submitEnable: true, quizcode: results[0].quizid });
+            }
+          )
+        }
+
+      });
   } else {
     res.redirect('/');
   }
@@ -51,28 +86,28 @@ app.get('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
   conn.query(
     'SELECT * FROM question WHERE userid=? AND quesid=?',
     [1, qid],
-    (err, results)=> {
-      if(err) throw err;
+    (err, results) => {
+      if (err) throw err;
       console.log(results[0]);
-      res.render('setvcq.ejs', { quesid:qid, arr: results[0] });
+      res.render('setvcq.ejs', { quesid: qid, arr: results[0] });
     }
   )
-  
+
 });
 
 app.post('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
   let qid = req.params.qid;
   let arr = [
-  req.body.qstring,
-  req.body.opta,
-  req.body.optapt,
-  req.body.optb,
-  req.body.optbpt,
-  req.body.optc,
-  req.body.optcpt,
-  req.body.optd,
-  req.body.optdpt]
-  var userid=1;
+    req.body.qstring,
+    req.body.opta,
+    req.body.optapt,
+    req.body.optb,
+    req.body.optbpt,
+    req.body.optc,
+    req.body.optcpt,
+    req.body.optd,
+    req.body.optdpt]
+  var userid = 1;
   console.log(qid, req.body);
   //agilan
   conn.query(
@@ -82,7 +117,7 @@ app.post('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
       if (err) throw err;
       // console.log(results);
       if (results.length == 0) {
-        
+
         conn.query(
           'INSERT INTO question VALUES (?,?,?,?,?,?,?,?,?,?,?)',  //set conn query to mysql
           [qid, 1, ...arr],    //insert email and password as data
@@ -92,14 +127,24 @@ app.post('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
           }
         )
       }
-      else{
+      else {
         console.log("helo");
         conn.query(
           'update question set  qtext=?, opta=?, optascore=?, optb=?, optbscore=?, optc=?, optcscore=?, optd=?, optdscore=? where userid=? and quesid=?',  //set conn query to mysql
-          [ ...arr, req.body.qstring, 1, qid],    //insert email and password as data
+          [...arr, 1, qid],    //insert email and password as data
           (err, results) => {   //function for error throwing and the results
             if (err) throw err;
-            res.redirect('/myquiz');
+            // res.render('myquiz.ejs', {submitEnable: false});
+            conn.query(
+              'SELECT * FROM question WHERE userid=?',
+              [1, qid],
+              (err, results) => {
+                if (err) throw err;
+                if (results.length == 5) submitEnable = true;
+                res.redirect('/myquiz');
+              }
+            )
+
           }
         )
       }
@@ -115,8 +160,35 @@ app.get('/setvcq', (req, res) => {  //get function to render register.ejs
 });
 
 app.get('/myquiz', (req, res) => {  //get function to render register.ejs
-  res.render('myquiz.ejs');
+  res.render('myquiz.ejs', { submitEnable: true });
 });
+
+
+
+app.get('/enterquizcode', (req, res) => {  //get function to render register.ejs
+
+  res.render('enterquizcode.ejs');
+});
+
+app.post('/enterquizcode', (req, res) => {  //get function to render register.ejs
+  
+  conn.query(
+    "select * from quiz where quizid=?",
+    [req.body.friendcode],
+    (err,results)=> {
+      if(err) throw err;
+      conn.query(
+        "select * from question where userid=?",
+        [results[0].userid],
+        (err, result)=>{
+          console.log(result)
+          res.render('attendquiz.ejs', {result: result});
+        }
+      )
+    }
+  )
+});
+
 
 app.post('/auth_login', (req, res) => { //post function to authorize user login
   let email = req.body.email,           //declare email/password variable
@@ -144,12 +216,23 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
   }
 });
 
-app.post('/auth_register', (req, res) => {  //post function to authorize registration
+app.post('/auth_register', async (req, res) => {  //post function to authorize registration
   let register_data = {   //set register_data variable to have name, email, and password property
     name: req.body.name,
     email: req.body.email,
     password: req.body.password
   };
+  const { requestId } = await courier.send({
+    message: {
+      to: {
+        email: req.body.email,
+      },
+      template: "9B22S9HXAXMBKYPESJ6PQ9SWE165",
+      data: {
+        variables: req.body.name,
+      },
+    },
+  });
   conn.query('INSERT INTO user SET ?', register_data, (err, results) => {  //set conn query to mysql with err and the results
     if (err) throw err;
     else {
@@ -157,6 +240,7 @@ app.post('/auth_register', (req, res) => {  //post function to authorize registr
       res.redirect('/');  //redirect to login page
     }
   });
+
 });
 
 app.use('/logout', (req, res) => {
@@ -164,9 +248,36 @@ app.use('/logout', (req, res) => {
   res.redirect('/');
 })
 
+app.post("/broadcastquiz", (req, res) => {
+  conn.query(
+    'SELECT * FROM question where userid=?',  //set conn query to mysql
+    [1],    //insert email and password as data
+    (err, results) => {   //function for error throwing and the results
+      if (err) throw err;
+      if (results.length < 5) {
+        res.render('myquiz.ejs', { submitEnable: submitEnable });
+      } else {
+        conn.query(
+          'INSERT into quiz (userid) values (?)',
+          [1],
+          (err, results) => {
+            if (err) throw err;
+            res.redirect("/home");
+          }
+        )
+      }
+    }
+  );
+
+})
+
 app.get('*', (req, res) => {
   res.send('404 - Page not found'); //set other unknown pages as 404
 });
+
+
+
+
 
 //# middleware port
 app.listen(9090, () => { //listen to port

@@ -12,9 +12,19 @@
  
      </head>
      <body>
+        
          <div id="content-container" >
              <div id="_bg__vibe_check_question"  ></div>
-             <div id="rectangle_4"  ></div>
+             <div id="rectangle_4"  ><form method="POST" action="/broadcastquiz">
+                <button>Submit</button>
+            </form>
+            <% if (!submitEnable) { %>
+            <div>all questions are not set</div>
+
+            <% } %>
+            
+        </div>
+             
              <a id="group_7_cls_a"  _par="" href="setvcq/1" >
                  <div id="rectangle_4_ek1"  ></div>
                  
@@ -57,6 +67,8 @@
                 </div> 
 
             </a>
+
+            
  
              <a id="_vector_ek10_link" href="/home" >
              <img src="skins/_vector_ek10.png" id="_vector_ek10" />

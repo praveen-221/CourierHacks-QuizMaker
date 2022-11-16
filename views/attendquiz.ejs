@@ -31,34 +31,34 @@
      </head>
      <body class="mx-auto">
         <div class="container d-flex justify-content-center flex-column">
-            <form class="d-flex justify-content-center flex-column ">
-                
+            <form class="d-flex justify-content-center flex-column " method="post" action="/attendquiz">
+                <input type="hidden" name="userid" value="<%=userid%>">
                 <% for(var i=0;i<result.length;i++){ %>
                   <div class="card m-2 " style="width: 100rem;">
                     <div class="card-body ">
                       <h5 class="card-title" >Q<%= result[i].quesid %></h5>
                       <p class="card-text"> <%= result[i].qtext %> </p>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1ans" id="q1" value="<%= result[i].optascore %>" checked>
-                            <label class="form-check-label" for="q1">
+                            <input class="form-check-input" type="radio" name="q<%=i%>ans" id="q<%=i%>" value="optascore" checked>
+                            <label class="form-check-label" for="q<%=i%>">
                               <%= result[i].opta %>
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1ans" id="q1" value="<%= result[i].optbscore %>">
-                            <label class="form-check-label" for="q1">
+                            <input class="form-check-input" type="radio" name="q<%=i%>ans" id="q<%=i%>>" value="optbscore">
+                            <label class="form-check-label" for="q<%=i%>">
                               <%= result[i].optb %>
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1ans" id="q1" value="<%= result[i].optcscore %>">
-                            <label class="form-check-label" for="q1">
+                            <input class="form-check-input" type="radio" name="q<%=i%>ans" id="q<%=i%>" value="optcscore">
+                            <label class="form-check-label" for="q<%=i%>">
                               <%= result[i].optc %>
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1ans" id="q1" value="<%= result[i].optdscore %>">
-                            <label class="form-check-label" for="q1">
+                            <input class="form-check-input" type="radio" name="q<%=i%>ans" id="q<%=i%>" value="optdscore">
+                            <label class="form-check-label" for="q<%=i%>">
                               <%= result[i].optd %>
                             </label>
                           </div>
@@ -67,9 +67,9 @@
                     </div>
                   </div>
                   <% } %>
+            <button type="submit" class="btn btn-primary">Submit</button>
                   
             </form>
-            <button type="submit" class="btn btn-primary">Submit</button>
         </div>
      </body>
  </html>

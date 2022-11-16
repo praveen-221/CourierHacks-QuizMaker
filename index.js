@@ -53,7 +53,7 @@ app.get('/home', (req, res) => {  //get function to render home.ejs
     let quizattend = false;
     conn.query(
       'SELECT * FROM question where userid=?',  //set conn query to mysql
-      [1],    //insert email and password as data
+      [req.session.userid],    //insert email and password as data
       (err, results) => {   //function for error throwing and the results
         if (err) throw err;
         if (results.length < 5) {
@@ -62,7 +62,7 @@ app.get('/home', (req, res) => {  //get function to render home.ejs
 
         else {
           conn.query(
-            "select * from quiz where userid=?", [1],
+            "select * from quiz where userid=?", [req.session.userid],
             (err, results) => {
               console.log(results[0].quizid)
               res.render('homepage.ejs', { submitEnable: true, quizcode: results[0].quizid });
@@ -85,7 +85,7 @@ app.get('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
   let qid = req.params.qid;
   conn.query(
     'SELECT * FROM question WHERE userid=? AND quesid=?',
-    [1, qid],
+    [req.session.userid, qid],
     (err, results) => {
       if (err) throw err;
       console.log(results[0]);
@@ -107,7 +107,7 @@ app.post('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
     req.body.optcpt,
     req.body.optd,
     req.body.optdpt]
-  var userid = 1;
+  var userid = req.session.userid;
   console.log(qid, req.body);
   //agilan
   conn.query(
@@ -131,13 +131,13 @@ app.post('/setvcq/:qid', (req, res) => {  //get function to render register.ejs
         console.log("helo");
         conn.query(
           'update question set  qtext=?, opta=?, optascore=?, optb=?, optbscore=?, optc=?, optcscore=?, optd=?, optdscore=? where userid=? and quesid=?',  //set conn query to mysql
-          [...arr, 1, qid],    //insert email and password as data
+          [...arr, req.session.userid, qid],    //insert email and password as data
           (err, results) => {   //function for error throwing and the results
             if (err) throw err;
             // res.render('myquiz.ejs', {submitEnable: false});
             conn.query(
               'SELECT * FROM question WHERE userid=?',
-              [1, qid],
+              [req.session.userid],
               (err, results) => {
                 if (err) throw err;
                 if (results.length == 5) submitEnable = true;
@@ -181,8 +181,8 @@ app.post('/enterquizcode', (req, res) => {  //get function to render register.ej
         "select * from question where userid=?",
         [results[0].userid],
         (err, result)=>{
-          console.log(result)
-          res.render('attendquiz.ejs', {result: result});
+          console.log(result[0].userid)
+          res.render('attendquiz.ejs', {result: result, userid:results[0].userid});
         }
       )
     }
@@ -201,6 +201,7 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
       (err, results) => {   //function for error throwing and the results
         if (err) throw err;
         if (results.length > 0) {
+          req.session.userid = results[0].userid;
           req.session.loggedin = true;   //set loggedin property as true
           req.session.email = email;    //set email property as email itself
           res.redirect('/home');    //redirect to home
@@ -251,7 +252,7 @@ app.use('/logout', (req, res) => {
 app.post("/broadcastquiz", (req, res) => {
   conn.query(
     'SELECT * FROM question where userid=?',  //set conn query to mysql
-    [1],    //insert email and password as data
+    [req.session.userid],    //insert email and password as data
     (err, results) => {   //function for error throwing and the results
       if (err) throw err;
       if (results.length < 5) {
@@ -270,6 +271,86 @@ app.post("/broadcastquiz", (req, res) => {
   );
 
 })
+
+app.post('/attendquiz',(req,res)=>{
+  console.log("---",req.body);
+  let crctpts = 0;
+  let redpts = 0;
+  let novibe = 0;
+  let vibepercentage = 0;
+  let vcomm="";
+  conn.query(
+    'SELECT * FROM question WHERE userid = ?',  //set conn query to mysql
+    [req.body.userid],    //insert email and password as data
+    (err, results) => {   //function for error throwing and the results
+      if (err) throw err;
+      if (results.length == 5) {
+           //redirect to home
+           console.log(results);
+           console.log(results[4][req.body.q0ans]);
+           if(results[4][req.body.q0ans]=="1"){
+            crctpts+=1;
+           }else if(results[4][req.body.q0ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           if(results[0][req.body.q1ans]=="1"){
+            crctpts+=1;
+           }else if(results[0][req.body.q1ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           if(results[1][req.body.q2ans]=="1"){
+            crctpts+=1;
+           }else if(results[1][req.body.q2ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           if(results[2][req.body.q3ans]=="1"){
+            crctpts+=1;
+           }else if(results[2][req.body.q3ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           if(results[3][req.body.q4ans]=="1"){
+            crctpts+=1;
+           }else if(results[3][req.body.q4ans]=="-1"){
+              redpts+=1;
+           }else{
+              novibe+=1;
+           }
+           
+
+           if(redpts==5){
+            vibepercentage=-100;
+            vcomm="Hmmm No comments to each their own"
+           }else if(novibe==5){
+            vibepercentage=0;
+            vcomm="Maybe u could get to know each other more"
+           }else if(crctpts==5){
+            vibepercentage=100;
+            vcomm="If you are not bffs yet, you should be"
+           }else{
+            vibepercentage = (crctpts/5)*100 - (redpts/5)*20 ;
+           }
+
+      } else {
+        // res.redirect('/home'    //json output with error and error code
+        //   )
+      }
+      res.render('quizcomplete.ejs',{vbp:vibepercentage,vbcom:vcomm});
+    }
+  );
+});
+
+app.use('/quizcomplete',(req,res)=>{
+res.render('quizcomplete.ejs',{vbp:"98",vbcom:"Nice match"});
+});
+
 
 app.get('*', (req, res) => {
   res.send('404 - Page not found'); //set other unknown pages as 404

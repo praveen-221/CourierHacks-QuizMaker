@@ -7,7 +7,7 @@ let conn = require('./mysql.js'); //declare conn variable to require file mysql.
 // Install with: npm install @trycourier/courier
 const { CourierClient } = require("@trycourier/courier");
 const courier = CourierClient({ authorizationToken: "pk_prod_BJCG9V609RMYQMMTRCAS3BSA0DSA" });
-var alert = require('alert');
+var alert = require('alert'); 
 
 const window = require("window");
 const { request } = require('express');

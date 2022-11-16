@@ -4,6 +4,9 @@ const bodyParser = require('body-parser'); //import body-parser dependency as bo
 const express = require('express'); //import express dependency as express
 const app = express(); //declare app variable as express
 let conn = require('./mysql.js'); //declare conn variable to require file mysql.js
+// Install with: npm install @trycourier/courier
+const { CourierClient } = require("@trycourier/courier");
+const courier = CourierClient({ authorizationToken: "pk_prod_BJCG9V609RMYQMMTRCAS3BSA0DSA" });
 
 //# settings
 //environment settings & db connect
@@ -87,12 +90,23 @@ app.post('/auth_login', (req, res) => { //post function to authorize user login
   }
 });
 
-app.post('/auth_register', (req, res) => {  //post function to authorize registration
+app.post('/auth_register', async (req, res) => {  //post function to authorize registration
   let register_data = {   //set register_data variable to have name, email, and password property
     name: req.body.name,
     email: req.body.email,
     password: req.body.password
   };
+  const { requestId } = await courier.send({
+    message: {
+      to: {
+        email: req.body.email,
+      },
+      template: "9B22S9HXAXMBKYPESJ6PQ9SWE165",
+      data: {
+        variables: req.body.name,
+      },
+    },
+  });
   conn.query('INSERT INTO user SET ?', register_data, (err, results) => {  //set conn query to mysql with err and the results
     if (err) throw err;
     else {
@@ -100,6 +114,7 @@ app.post('/auth_register', (req, res) => {  //post function to authorize registr
       res.redirect('/');  //redirect to login page
     }
   });
+  
 });
 
 app.use('/logout',(req,res)=>{
